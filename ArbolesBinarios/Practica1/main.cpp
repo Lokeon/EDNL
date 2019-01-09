@@ -3,6 +3,9 @@
 #include "../abin_E-S.hpp"
 #include "Ejercicio1.hpp"
 #include "Ejercicio2.hpp"
+#include "Ejercicio3.hpp"
+#include "Ejercicio6.hpp"
+#include "Ejercicio7.hpp"
 
 
 int main()
@@ -31,9 +34,12 @@ int main()
       //cout << "\n ****Mostrar �rbol binario B*****\n";
       //imprimirAbin(B);
 
-      //std::cout << "Numero de Nodos:" << contarNodos(B) << std::endl;
-      std::cout << "Numero de Nodos:" << contarNodos(B) << std::endl;
-
-      
+        //std::cout << "Numero de Nodos:" << contarNodos(B) << std::endl;
+        //std::cout << "Altura:" << altura(B) << std::endl;
+        //std::cout << "Profundidad:" << profundidad(B,B.hijoIzqdoB(B.hijoDrchoB(B.raizB()))) << std::endl;
+        //std::cout << "AlturaB:" << B.alturaB(B.raizB()) << std::endl;
+        //std::cout << "ProfundidadB:" << B.profundidadB(B.hijoIzqdoB(B.hijoDrchoB(B.raizB()))) << std::endl;
+        //std::cout << "Desequilibrio:" << desequilibrio(B) << std::endl;
+        std::cout << "Pseudocompleto:" << pseudocompleto(B) << std::endl;
 
 }
