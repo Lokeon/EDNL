@@ -34,7 +34,8 @@ int main()
     //cout << "\n ****Mostrar �rbol binario B*****\n";
     //imprimirAbin(B);
 
-    std::cout << "Iguales:" << espejo(B, C) << std::endl;
-    //std::cout << "Altura:" << altura(B) << std::endl;
+    // std::cout << "Iguales:" << espejo(B, C) << std::endl;
+    // imprimirAbin(B);
+    // imprimirAbin(reflejo(B));
     //std::cout << "Profundidad:" << profundidad(B,B.hijoIzqdoB(B.hijoDrchoB(B.raizB()))) << std::endl;
 }

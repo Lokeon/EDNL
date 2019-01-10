@@ -13,9 +13,9 @@ using std::endl;
 
 template <typename T>
 void rellenarAbin(Abin<T>& A, const T& fin)
-// Pre: A está vacío.
-// Post: Rellena el árbol A con la estructura y elementos
-//       leídos en preorden de la entrada estándar, usando
+// Pre: A estï¿½ vacï¿½o.
+// Post: Rellena el ï¿½rbol A con la estructura y elementos
+//       leï¿½dos en preorden de la entrada estï¿½ndar, usando
 //       fin como elemento especial para introducir nodos nulos.
 {
    T e;
@@ -33,7 +33,7 @@ void rellenarAbin(Abin<T>& A, const T& fin)
 template <typename T>
 void rellenarDescendientes(typename Abin<T>::nodo r, Abin<T>& A, const T& fin)
 // Pre: r es un nodo hoja de A.
-// Post: Lee de la entrada estándar y en preorden los descendientes de r,
+// Post: Lee de la entrada estï¿½ndar y en preorden los descendientes de r,
 //       usando fin para introducir nodos nulos.
 {
    T ehi, ehd;
@@ -59,9 +59,9 @@ void rellenarDescendientes(typename Abin<T>::nodo r, Abin<T>& A, const T& fin)
 
 template <typename T>
 void rellenarAbin(istream& is, Abin<T>& A)
-// Pre: A está vacío.
+// Pre: A estï¿½ vacï¿½o.
 // Post: Extrae los nodos de A del flujo de entrada is,
-//       que contendrá el elemento especial que denota
+//       que contendrï¿½ el elemento especial que denota
 //       un nodo nulo seguido de los elementos en preorden,
 //       incluyendo los correspondientes a nodos nulos.
 {
@@ -96,7 +96,7 @@ void rellenarDescendientes(istream& is, typename Abin<T>::nodo r, Abin<T>& A, co
 
 template <typename T>
 void imprimirAbin (const Abin<T>& A)
-// Post: Muestra los nodos de A en la salida estándar
+// Post: Muestra los nodos de A en la salida estï¿½ndar
 {
    if (!A.arbolVacioB())
    {
@@ -108,12 +108,12 @@ void imprimirAbin (const Abin<T>& A)
       imprimirDescendientes(A.raizB(), A);
    }
    else
-      cout << "Árbol vacío\n";
+      cout << "Arbol vacÃ­o\n";
 }
 
 template <typename T>
 void imprimirDescendientes (typename Abin<T>::nodo r, const Abin<T>& A)
-// Post: Muestra los descendientes de r en la salida estándar.
+// Post: Muestra los descendientes de r en la salida estï¿½ndar.
 {
    if (A.hijoIzqdoB(r) != Abin<T>::NODO_NULO)
    {
