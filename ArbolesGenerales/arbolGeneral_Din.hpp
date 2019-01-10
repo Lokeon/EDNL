@@ -3,7 +3,7 @@
 #include <cassert>
 
 template <typename T> class Agen {
-    struct celda; // declaraci�n adelantada privada
+    struct celda; 
 public:
     typedef celda* nodo;
     static const nodo NODO_NULO;
@@ -22,7 +22,7 @@ public:
     nodo hijoIzqdo(nodo n) const;
     nodo hermDrcho(nodo n) const;
     Agen(const Agen<T>& a); // ctor. de copia
-    Agen<T>& operator =(const Agen<T>& a); // asignaci�n de �rboles
+    Agen<T>& operator =(const Agen<T>& a); 
     ~Agen(); // destructor
 private:
     struct celda {
@@ -31,7 +31,7 @@ private:
         celda(const T& e, nodo p = NODO_NULO): elto(e),
         padre(p), hizq(NODO_NULO), heder(NODO_NULO) {}
     };
-    nodo r; // nodo ra�z del �rbol
+    nodo r; 
     void destruirNodos(nodo& n);
     nodo copiar(nodo n);
 };
