@@ -3,8 +3,9 @@
 #include "../abb_E-S.hpp"
 #include <iostream>
 #include "Ejercicio3.hpp"
-#include "Ejercicio4.hpp"
+//#include "Ejercicio4.hpp"
 #include "Ejercicio5.hpp"
+#include "Ejercicio6.hpp"
 
 int main()
 {
@@ -20,9 +21,11 @@ int main()
 	a.insertar(3);
 
 	b.insertar(30);
+	b.insertar(45);
+	b.insertar(39);
+	b.insertar(18);
 	b.insertar(25);
-	b.insertar(66);
-	
+	b.insertar(3);
 
 	// imprimirAbb(a);
 
@@ -32,6 +35,6 @@ int main()
 
 	//equilibrar(a,b);
 
-	inter(a,b,c);
+	diferencia(a, b, c);
 	imprimirAbb(c);
 }
