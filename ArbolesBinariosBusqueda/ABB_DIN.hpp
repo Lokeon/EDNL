@@ -3,37 +3,35 @@
 
 #include <cassert>
 
-
 template <typename T>
-class Abb {
-public:
+class Abb
+{
+  public:
     Abb(); // constructor
-    const Abb& buscar(const T& e) const;
-    void insertar(const T& e);
-    void eliminar(const T& e);
+    const Abb &buscar(const T &e) const;
+    void insertar(const T &e);
+    void eliminar(const T &e);
     bool vacio() const;
-    const T& elemento() const;
-    const Abb& izqdo() const;
-    const Abb& drcho() const;
-    Abb(const Abb& A); // ctor. de copia
-    Abb& operator =(const Abb& A); // asig. �rboles
+    const T &elemento() const;
+    const Abb &izqdo() const;
+    const Abb &drcho() const;
+    Abb(const Abb &A); // ctor. de copia
+    Abb &operator=(const Abb &A);
     ~Abb(); // destructor
+    void podar(const T &elto);
+    int tamano() const;
 
-    void podar(const T& elto) ;
-    int tamano() const ;
-
-private:
-    struct arbol {
-    T elto;
-    Abb izq, der;
-    arbol(const T& e): elto(e) {}
+  private:
+    struct arbol
+    {
+        T elto;
+        Abb izq, der;
+        arbol(const T &e) : elto(e) {}
     };
-    arbol* r; // ra�z del �rbol
+    arbol *r; // raíz
     T borrarMin();
-    void copiar(const Abb& A);
-    void crearArbolB(Abin<T>& A,typename Abin<T>::nodo n,arbol* p) const;
-    int rec_tamano(arbol* r) const ;
-
+    void copiar(const Abb &A);
+    int tamano_rec(arbol *r) const;
 };
 
 template <typename T>
@@ -46,68 +44,62 @@ inline bool Abb<T>::vacio() const
 }
 
 template <typename T>
-const Abb<T>& Abb<T>::buscar(const T& e) const
+const Abb<T> &Abb<T>::buscar(const T &e) const
 {
     if (r == 0) // �rbol vac�o, e no encontrado
         return *this;
-    else
-        if (e < r->elto) // buscar en sub�rbol izqdo.
-            return r->izq.buscar(e);
-        else
-            if (r->elto < e) // buscar en sub�rbol drcho.
-                return r->der.buscar(e);
-            else // encontrado e en la ra�z
-                return *this;
+    else if (e < r->elto) // buscar en sub�rbol izqdo.
+        return r->izq.buscar(e);
+    else if (r->elto < e) // buscar en sub�rbol drcho.
+        return r->der.buscar(e);
+    else // encontrado e en la ra�z
+        return *this;
 }
 
 template <typename T>
-void Abb<T>::insertar(const T& e)
+void Abb<T>::insertar(const T &e)
 {
     if (r == 0) // �rbol vac�o
         r = new arbol(e);
-    else
-        if (e < r->elto) // insertar en el sub�rbol izqdo.
-            r->izq.insertar(e);
-        else
-            if (r->elto < e) // insertar en el sub�rbol drcho.
-                r->der.insertar(e);
+    else if (e < r->elto) // insertar en el sub�rbol izqdo.
+        r->izq.insertar(e);
+    else if (r->elto < e) // insertar en el sub�rbol drcho.
+        r->der.insertar(e);
 }
 
 template <typename T>
-void Abb<T>::eliminar(const T& e)
+void Abb<T>::eliminar(const T &e)
 {
     if (r != 0)
-    { // �rbol no vac�o
+    {                    // �rbol no vac�o
         if (e < r->elto) // quitar e del sub�rbol izqdo.
             r->izq.eliminar(e);
-        else
-            if (r->elto < e) // quitar e del sub�rbol drcho.
-                r->der.eliminar(e);
-            else // quitar e de la ra�z
-                if (r->izq.r == 0 && r->der.r == 0)
-                { // 1. Ra�z es hoja
-                    delete(r);
-                    r = 0; // el �rbol queda vac�o
-                }
-                else
-                    if (r->der.r == 0)
-                    { // 2. Ra�z s�lo tiene hijo izqdo.
-                        arbol* a = r->izq.r;
-                        r->izq.r = 0; // impide destruir el sub�rbol izqdo.
-                        delete(r);
-                        r = a;
-                    }
-                    else
-                        if (r->izq.r == 0) { // 3. Ra�z s�lo tiene hijo drcho.
-                            arbol* a = r->der.r;
-                            r->der.r = 0; // impide destruir el sub�rbol drcho.
-                            delete(r);
-                            r = a;
-                        }
-                        else // 4. Ra�z tiene dos hijos
-                            // Eliminar el m�nimo del sub�rbol derecho y sustituir
-                            // el elemento de la ra�z por �ste.
-                            r->elto = r->der.borrarMin();
+        else if (r->elto < e) // quitar e del sub�rbol drcho.
+            r->der.eliminar(e);
+        else // quitar e de la ra�z
+            if (r->izq.r == 0 && r->der.r == 0)
+        { // 1. Ra�z es hoja
+            delete (r);
+            r = 0; // el �rbol queda vac�o
+        }
+        else if (r->der.r == 0)
+        { // 2. Ra�z s�lo tiene hijo izqdo.
+            arbol *a = r->izq.r;
+            r->izq.r = 0; // impide destruir el sub�rbol izqdo.
+            delete (r);
+            r = a;
+        }
+        else if (r->izq.r == 0)
+        { // 3. Ra�z s�lo tiene hijo drcho.
+            arbol *a = r->der.r;
+            r->der.r = 0; // impide destruir el sub�rbol drcho.
+            delete (r);
+            r = a;
+        }
+        else // 4. Ra�z tiene dos hijos
+            // Eliminar el m�nimo del sub�rbol derecho y sustituir
+            // el elemento de la ra�z por �ste.
+            r->elto = r->der.borrarMin();
     }
 }
 
@@ -120,9 +112,9 @@ T Abb<T>::borrarMin()
     if (r->izq.r == 0)
     { // sub�rbol izquierdo vac�o
         T e = r->elto;
-        arbol* hd = r->der.r;
+        arbol *hd = r->der.r;
         r->der.r = 0; // impide destruir el sub�rbol drcho
-        delete(r);
+        delete (r);
         r = hd; // sustituir r por el sub�rbol derecho
         return e;
     }
@@ -131,37 +123,37 @@ T Abb<T>::borrarMin()
 }
 
 template <typename T>
-inline const T& Abb<T>::elemento() const
+inline const T &Abb<T>::elemento() const
 {
     assert(r != 0);
     return r->elto;
 }
 
 template <typename T>
-inline const Abb<T>& Abb<T>::izqdo() const
+inline const Abb<T> &Abb<T>::izqdo() const
 {
     assert(r != 0);
     return r->izq;
 }
 
 template <typename T>
-inline const Abb<T>& Abb<T>::drcho() const
+inline const Abb<T> &Abb<T>::drcho() const
 {
     assert(r != 0);
     return r->der;
 }
 
 template <typename T>
-inline Abb<T>::Abb(const Abb<T>& A): r(0)
+inline Abb<T>::Abb(const Abb<T> &A) : r(0)
 {
     copiar(A);
 }
 
 template <typename T>
-Abb<T>& Abb<T>::operator =(const Abb<T>& A)
+Abb<T> &Abb<T>::operator=(const Abb<T> &A)
 {
     if (this != &A)
-    { // evitar autoasignaci�n
+    {                 // evitar autoasignaci�n
         this->~Abb(); // vaciar el �rbol
         copiar(A);
     }
@@ -172,27 +164,27 @@ Abb<T>& Abb<T>::operator =(const Abb<T>& A)
 template <typename T>
 Abb<T>::~Abb()
 {
-if (r != 0) { // �rbol no vac�o
-delete r; // llama a r->hizq.~Abb() y a r->hder.~Abb()
-r = 0; // el �rbol queda vac�o
-}
+    if (r != 0)
+    {             // �rbol no vac�o
+        delete r; // llama a r->hizq.~Abb() y a r->hder.~Abb()
+        r = 0;    // el �rbol queda vac�o
+    }
 }
 
 // M�todo privado
 template <typename T>
-void Abb<T>::copiar(const Abb<T>& A)
+void Abb<T>::copiar(const Abb<T> &A)
 // Copia el �rbol a en *this
 {
     if (A.r != 0)
-    { // �rbol no vac�o
+    {                             // �rbol no vac�o
         r = new arbol(A.r->elto); // copiar ra�z
-        r->izq.copiar(A.r->izq); // copiar sub�rbol izqdo.
-        r->der.copiar(A.r->der); // copiar sub�rbol drcho.
+        r->izq.copiar(A.r->izq);  // copiar sub�rbol izqdo.
+        r->der.copiar(A.r->der);  // copiar sub�rbol drcho.
     }
 }
 
-
-// EJERCICIIO 1
+// EJERCICIO 1
 /*
 template <typename T>
 void Abb<T>::poda(const T& elto)
@@ -203,55 +195,44 @@ void Abb<T>::poda(const T& elto)
 }*/
 
 template <typename T>
-void Abb<T>::podar(const T& elto)
+void Abb<T>::podar(const T &elto)
 {
-     if(!vacio())
-     {
-         if(elto < r->elto)
-         {
-            r->izq.podar(elto);
-         }
-         else
-         {
-           if(elto > r->elto)
-           {
-              r->der.podar(elto);
-           }
-           else
-           {
-             this->~Abb() ;
-           }
-         }
-     }
+    if (!vacio())
+    {
+        if (elto > r->elto)
+        {
+            r->der.podar(elto);
+        }
+        else
+        {
+            if (elto < r->elto)
+            {
+                r->izq.podar(elto);
+            }
+            else
+            {
+                this->~Abb();
+            }
+        }
+    }
 }
 
 template <typename T>
 int Abb<T>::tamano() const
 {
-     if(!vacio())
-     {
-       return rec_tamano(r) ;
-     }
-     else
-     {
-       return 0 ;
-     }
+    if (vacio())
+        return 0;
+    else
+        return tamano_rec(r);
 }
 
 template <typename T>
-int Abb<T>::rec_tamano(arbol* b) const
+int Abb<T>::tamano_rec(arbol *n) const
 {
-    if(b == nullptr)
-    {
-      return 0 ;
-    }
+    if (n == nullptr)
+        return 0;
     else
-    {
-      return 1 + rec_tamano(b->izq.r) + rec_tamano(b->der.r) ;
-    }
-
+        return 1 + tamano_rec(n->izq.r) + tamano_rec(n->der.r);
 }
-
-
 
 #endif // ABB_H
