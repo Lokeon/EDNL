@@ -6,7 +6,6 @@ template <typename T>
 void unions(const Abb<T> &A, const Abb<T> &B, Abb<T> &AVL)
 {
     Abb<T> AUB;
-    std::vector<T> vec;
 
     union_rec(A, AUB);
     union1_rec(B, AUB);
@@ -42,4 +41,3 @@ void union1_rec(const Abb<T> &A, Abb<T> &AUB)
         }
     }
 }
-

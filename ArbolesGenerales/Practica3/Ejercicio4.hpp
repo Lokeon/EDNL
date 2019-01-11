@@ -4,7 +4,9 @@
 template <typename T>
 void podar(Agen<T> &A, const T elemento)
 {
-    if (!A.arbolVacio())
+    if (A.arbolVacio())
+        return 0;
+    else
         podar_rec(A, elemento, A.raiz());
 }
 
@@ -25,7 +27,7 @@ void podar_rec(Agen<T> &A, const T elemento, typename Agen<T>::nodo nA)
         {
             while (hijo != Agen<T>::NODO_NULO)
             {
-                podar_rec(A,elemento,hijo);
+                podar_rec(A, elemento, hijo);
                 hijo = A.hermDrcho(hijo);
             }
         }
