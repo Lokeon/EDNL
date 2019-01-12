@@ -2,11 +2,15 @@
 #include "../arbolBinario_Din.hpp"
 #include "../abin_E-S.hpp"
 #include "nostalgicos.hpp"
+#include "3nietos.hpp"
+#include "esAVL.hpp"
+#include "rebeldes.hpp"
 
 int main()
 {
     char op;
     Abin<char> A{}, B{};
+    Abin<double> C;
     //-----------------Entradas y salidas
     std::cout << "¿Desea rellenar? S/N";
     std::cin >> op;
@@ -23,11 +27,17 @@ int main()
 
     //cout << "*****Lectura del arbol binario A desde abin.dat****\n";
     std::ifstream fe("abin.dat");
-    rellenarAbin<char>(fe, B);
+    rellenarAbin(fe, B);
     fe.close();
+
+    
 
     //cout << "\n ****Mostrar �rbol binario B*****\n";
     //imprimirAbin(B);
 
-    nostalgicos(B);
+    // nostalgicos(B);
+    // tresnietos(B);
+    // esAVL(B);
+    // rebeldes(B);
+
 }

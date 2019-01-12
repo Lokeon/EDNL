@@ -27,7 +27,7 @@ int nostalgicos_rec(const Abin<T> &A, typename Abin<T>::nodo nA)
         return 0;
     else
     {
-        if (ancestros(A, nA) > descendientes(A, nA) - 1)
+        if (ancestros(A, nA) > descendientes(A, nA))
         {
             return 1 + nostalgicos_rec(A, A.hijoDrchoB(nA)) + nostalgicos_rec(A, A.hijoIzqdoB(nA));
         }
