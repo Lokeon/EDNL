@@ -5,7 +5,7 @@ template <typename T>
 void podar(Agen<T> &A, const T elemento)
 {
     if (A.arbolVacio())
-        return 0;
+        A.arbolVacio();
     else
         podar_rec(A, elemento, A.raiz());
 }

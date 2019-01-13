@@ -1,9 +1,6 @@
 #include "../arbolGeneral_Din.hpp"
 #include "../agen_E-S.hpp"
-#include "Ejercicio1.hpp"
-#include "Ejercicio2.hpp"
-#include "Ejercicio3.hpp"
-#include "Ejercicio4.hpp"
+#include "densidad.hpp"
 #include <iostream>
 
 int main()
@@ -31,10 +28,6 @@ int main()
 
     //cout << "el arbol leido de abin.dat es: " << std::endl;
     //imprimirAgen(B);
-
-     //std::cout << "Grado:" << grado(B) << std::endl;
-    // std::cout << "Profundidad:" << profundidad(B,B.hermDrcho(B.hijoIzqdo(B.hijoIzqdo(B.raiz())))) << std::endl;
-    // std::cout << "Desequilibrio:" << desequilibrio(B) << std::endl;
-    // podar(B,'B');
-    // imprimirAgen(B);
+    densidad(B);
+   
 }
