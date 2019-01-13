@@ -2,6 +2,7 @@
 #include "../agen_E-S.hpp"
 #include "densidad.hpp"
 #include "nostalgicos.hpp"
+#include "identicos.hpp"
 #include <iostream>
 
 int main()
@@ -27,8 +28,13 @@ int main()
     rellenarAgen<char>(fe, B);
     fe.close();
 
+    std::ifstream fx("abin1.dat");
+    rellenarAgen<char>(fx, C);
+    fx.close();
+
     //cout << "el arbol leido de abin.dat es: " << std::endl;
     //imprimirAgen(B);
     //densidad(B);
-    nostalgicos(B);
+    //nostalgicos(B);
+    identicos(B,C);
 }
