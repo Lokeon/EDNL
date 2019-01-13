@@ -1,6 +1,7 @@
 #include "../arbolGeneral_Din.hpp"
 #include "../agen_E-S.hpp"
 #include "densidad.hpp"
+#include "nostalgicos.hpp"
 #include <iostream>
 
 int main()
@@ -28,6 +29,6 @@ int main()
 
     //cout << "el arbol leido de abin.dat es: " << std::endl;
     //imprimirAgen(B);
-    densidad(B);
-   
+    //densidad(B);
+    nostalgicos(B);
 }
