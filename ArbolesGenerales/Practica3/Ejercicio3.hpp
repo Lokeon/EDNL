@@ -32,7 +32,7 @@ int desequilibrio_rec(const Agen<T> &A, typename Agen<T>::nodo nA)
             hijo = A.hermDrcho(hijo);
         }
 
-        return 1 + des_max;
+        return  1 + des_max;
     }
 }
 
