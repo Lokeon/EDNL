@@ -50,7 +50,7 @@ int ancestros(const Abin<T> &A, typename Abin<T>::nodo nA)
 template <typename T>
 int descendientes(const Abin<T> &A, typename Abin<T>::nodo nA)
 {
-    if ((A.hijoDrchoB(nA) == Abin<T>::NODO_NULO) && A.hijoIzqdoB(nA) == Abin<T>::NODO_NULO))
+    if ((A.hijoDrchoB(nA) == Abin<T>::NODO_NULO) && (A.hijoIzqdoB(nA) == Abin<T>::NODO_NULO))
         return 0;
     else
         return 1 + descendientes(A, A.hijoDrchoB(nA)) + descendientes(A, A.hijoIzqdoB(nA));
