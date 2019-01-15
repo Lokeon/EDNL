@@ -47,8 +47,8 @@ void Zuelandia(GrafoP<tCoste> &G, const typename GrafoP<tCoste>::vertice capital
     vD = Dijkstra(G, capital, vertices);
     vDInv = DijkstraInv(G, capital, vertices);
 
-    std::cout << "Dijkstra:" << vD << std::endl;
-    std::cout << "DijkstraInv:" << vDInv << std::endl;
+    // std::cout << "Dijkstra:" << vD << std::endl;
+    // std::cout << "DijkstraInv:" << vDInv << std::endl;
 
     for (vertice i = 0; i < G.numVert(); ++i)
     {
