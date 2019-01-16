@@ -54,7 +54,7 @@ void Zuelandia(GrafoP<tCoste> &G, const typename GrafoP<tCoste>::vertice capital
     {
         for (vertice j = 0; j < G.numVert(); ++j)
         {
-            G[i][j] = suma(vD[j], vDInv[i]);
+            G[i][j] = suma(vD[j], vDInv[i]); 
         }
     }
 
