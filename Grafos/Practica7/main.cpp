@@ -5,6 +5,7 @@
 #include "Ejercicio4.hpp"
 #include "Ejercicio5.hpp"
 #include "Ejercicio6.hpp"
+#include "Ejercicio7.hpp"
 #include <iostream>
 
 int main()
@@ -84,4 +85,18 @@ int main()
   //   }
   //   std::cout << std::endl;
   // }
+
+  //EJERCICIO7
+  typename GrafoP<unsigned int>::vertice cambio1 = 1;
+  typename GrafoP<unsigned int>::vertice cambio2 = 2;
+  typename GrafoP<unsigned int>::vertice origen = 0;
+  typename GrafoP<unsigned int>::vertice destino = 3;
+
+  vector<vertice> vertices;
+
+  std::cout << Cambios2(trenG5, autobusG5, cambio1, cambio2, origen, destino, vertices) << std::endl;
+  for (int i = 0; i < vertices.size(); ++i)
+  {
+    std::cout <<" "<<  vertices[i];
+  }
 }
