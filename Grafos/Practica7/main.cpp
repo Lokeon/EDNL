@@ -3,6 +3,8 @@
 #include "Ejercicio1.hpp"
 #include "Ejercicio3.hpp"
 #include "Ejercicio4.hpp"
+#include "Ejercicio5.hpp"
+#include "Ejercicio6.hpp"
 #include <iostream>
 
 int main()
@@ -10,6 +12,9 @@ int main()
   GrafoP<unsigned int> G1("Ejercicio1.dat");
   GrafoP<unsigned int> G3("Ejercicio3.dat");
   GrafoP<unsigned int> G4("Ejercicio4.dat");
+  GrafoP<unsigned int> avionG5("AvionEj5.dat");
+  GrafoP<unsigned int> trenG5("TrenEj5.dat");
+  GrafoP<unsigned int> autobusG5("AutobusEj5.dat");
 
   // EJERCICIO 1
   // typename GrafoP<unsigned int>::vertice origen;
@@ -47,13 +52,36 @@ int main()
   // }
 
   //EJERCICIO4
-  typename GrafoP<unsigned int>::vertice capital = 0;
-  std::vector<unsigned int> parteDiario; // Para Comprobar
-  parteDiario.push_back(2);
-  parteDiario.push_back(5);
-  parteDiario.push_back(4);
-  parteDiario.push_back(5);
+  // typename GrafoP<unsigned int>::vertice capital = 0;
+  // std::vector<unsigned int> parteDiario; // Para Comprobar
+  // parteDiario.push_back(2);
+  // parteDiario.push_back(5);
+  // parteDiario.push_back(4);
+  // parteDiario.push_back(5);
 
-  std::cout << "Kilometros totales:"
-            << " " << cementosZuelandia(G4, capital, parteDiario) << std::endl;
+  // std::cout << "Kilometros totales:"
+  //           << " " << cementosZuelandia(G4, capital, parteDiario) << std::endl;
+
+  //EJERCICIO5
+  // unsigned int presupuesto = 55;
+  // typename GrafoP<unsigned int>::vertice ciudad = 0;
+  // vector<bool> fin = alergia(autobusG5, avionG5, trenG5, presupuesto, ciudad);
+
+  // for (int i = 0; i < autobusG5.numVert(); ++i)
+  // {
+  //   std::cout << "Ciudad" << i << " " <<  fin[i] << std::endl;
+  // }
+
+  //EJERCICIO6
+  // typename GrafoP<unsigned int>::vertice ciudad = 2;
+  // matriz<unsigned int> fin = agencia(trenG5, autobusG5, ciudad);
+
+  // for (int i = 0; i < autobusG5.numVert(); ++i)
+  // {
+  //   for (int j = 0; j < autobusG5.numVert(); ++j)
+  //   {
+  //     std::cout << " " << fin[i][j];
+  //   }
+  //   std::cout << std::endl;
+  // }
 }
