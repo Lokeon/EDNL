@@ -8,7 +8,7 @@
         "name": "(gdb) Launch",
         "type": "cppdbg",
         "request": "launch",
-        "program": "${workspaceFolder}/ArbolesGenerales/Practica3/main",
+        "program": "${workspaceFolder}/Grafos/Practica7/main",
         "args": [],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",

@@ -262,7 +262,7 @@ matriz<tCoste> FloydCostesMaximos(const GrafoP<tCoste> &G,
    {
       A[i] = G[i]; // copia costes del grafo
       //A[i][i] = 0;                  // diagonal a 0
-      A[i][i] = GrafoP<tCoste>::INFINITO;
+      A[i][i] = -GrafoP<tCoste>::INFINITO;
       P[i] = vector<vertice>(n, i); // caminos directos
    }
    // Calcular costes maximos y caminos correspondientes

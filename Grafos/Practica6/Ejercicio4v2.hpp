@@ -3,6 +3,8 @@
 
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
+//INCOMPLETO
+
 template <typename tCoste>
 void carreteraRebelde(GrafoP<tCoste> &G)
 {
