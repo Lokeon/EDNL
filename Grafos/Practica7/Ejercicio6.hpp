@@ -16,8 +16,8 @@ matriz<tCoste> agencia(const GrafoP<tCoste> &Tren, const GrafoP<tCoste> &Aut, ve
     Tr = Floyd(Tren, mV);
     Au = Floyd(Aut, mV);
 
-    std::cout << Tr << std::endl;
-    std::cout << Au << std::endl;
+    // std::cout << Tr << std::endl;
+    // std::cout << Au << std::endl;
 
     for (vertice i = 0; i < Aut.numVert(); ++i)
     {
