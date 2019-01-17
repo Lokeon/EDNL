@@ -3,13 +3,10 @@
 #include "Ejercicio2.hpp"
 #include "Ejercicio3.hpp"
 #include "Ejercicio4.hpp"
-#include <vector>
 #include <iostream>
 
 int main()
 {
-
-  std::string s = "";
 
   GrafoP<unsigned int> Gr("Dijkstra.dat");
   GrafoP<unsigned int> Zue("Zuelandia.dat");
