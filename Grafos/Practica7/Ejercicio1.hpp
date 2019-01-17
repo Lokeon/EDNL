@@ -5,7 +5,7 @@
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
 template <typename tCoste>
-tCoste costeViaje(const GrafoP<tCoste> &G, vertice& origen, vertice& destino)
+tCoste costeViaje(const GrafoP<tCoste> &G, vertice &origen, vertice &destino)
 {
     matriz<vertice> mV(G.numVert());         // matrizVertice
     matriz<tCoste> mC(G.numVert());          // matrizCoste Floyd con costes Maximos
@@ -19,21 +19,20 @@ tCoste costeViaje(const GrafoP<tCoste> &G, vertice& origen, vertice& destino)
 
     for (vertice i = 0; i < G.numVert(); ++i)
     {
-        for (vertice j = 0; j < G.numVert(); ++j)
+        if ((std::find(ciVisitada.begin(), ciVisitada.end(), i) != ciVisitada.end()) == false)
         {
-            if (std::find(ciVisitada.begin(), ciVisitada.end(), j) != ciVisitada.end())
+            for (vertice j = 0; j < G.numVert(); ++j)
             {
-                if ((mC[i][j] > max) && (mC[i][j] != GrafoP<tCoste>::INFINITO))
+                if ((mC[i][j] > max))
                 {
                     max = mC[i][j];
-                    verticeVisitado = j;
+                    verticeVisitado = i;
                 }
             }
         }
-
-        ciVisitada.push_back(verticeVisitado);
         costeTotal += max;
         max = 0;
+        ciVisitada.push_back(verticeVisitado);
     }
 
     origen = ciVisitada.front();
