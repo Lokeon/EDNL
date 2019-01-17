@@ -2,7 +2,8 @@
 #include "../algGrafos/alg_grafo_E-S.hpp"
 #include "Ejercicio2.hpp"
 #include "Ejercicio3.hpp"
-#include "Ejercicio4.hpp"
+//#include "Ejercicio4.hpp"
+#include "Ejercicio4v2.hpp"
 #include <iostream>
 
 int main()
@@ -21,5 +22,6 @@ int main()
   // std::cout << "Dijkstra(origen 0): " << Dijkstra(Gr, origen, vertices) << std::endl;
   // std::cout << "DijkstraInverso(destino 4)" << DijkstraInv(Gr, destino, vertices) << std::endl;
   // std::cout << "Aciclicos:" << aciclico(Gs) << std::endl
-  Zuelandia(Zue, capital);
+  //Zuelandia(Zue, capital);
+  Zuelandia2(Zue,capital);
 }

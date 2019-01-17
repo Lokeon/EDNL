@@ -5,12 +5,11 @@
 
 int main()
 {
-  GrafoP<unsigned int> Gr("");
+  GrafoP<unsigned int> G1("Ejercicio1.dat");
 
-  typename GrafoP<unsigned int>::vertice origen = 0;
-  typename GrafoP<unsigned int>::vertice destino = 4;
-  typename GrafoP<unsigned int>::vertice capital = 2;
+  typename GrafoP<unsigned int>::vertice origen;
+  typename GrafoP<unsigned int>::vertice destino;
 
-  vector<GrafoP<unsigned int>::vertice> vertices(Gr.numVert());
-
+  std::cout << "CosteTotal:"
+            << " " << costeViaje(G1, origen, destino) << "Origen:" << origen << "Destino" << destino << std::endl;
 }
