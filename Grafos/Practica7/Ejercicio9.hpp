@@ -5,11 +5,11 @@
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
 template <typename tCoste>
-tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice origen, vertice destino, int costeTaxi)
+tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice origen, vertice destino, int costeTaxi, vector<vertice> &ruta)
 {
-    tCoste costeTotal;
     GrafoP<tCoste> TrenAut(Aut.numVert() + Tren.numVert());
-    vector<vertice> vV(Aut.numVert() + Tren.numVert());
+    vector<vertice> vV1(Aut.numVert() + Tren.numVert());
+    vector<vertice> vV2(Aut.numVert() + Tren.numVert());
     vector<tCoste> trenInicio, busInicio;
 
     for (vertice i = 0; i < Tren.numVert(); ++i)
@@ -55,11 +55,17 @@ tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice orig
     // Mirar grafo para entender lo de arriba
     //std::cout << TrenAut << std::endl;
 
-    trenInicio = Dijkstra(TrenAut, origen, vV);
-    busInicio = Dijkstra(TrenAut, origen + Aut.numVert(), vV);
+    trenInicio = Dijkstra(TrenAut, origen, vV1);
+    busInicio = Dijkstra(TrenAut, origen + Aut.numVert(), vV2);
 
     if (trenInicio[destino] < busInicio[destino])
+    {
+        ruta = vV1;
         return trenInicio[destino];
+    }
     else
+    {
+        ruta = vV2;
         return busInicio[destino];
+    }
 }

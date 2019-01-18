@@ -9,6 +9,9 @@
 #include "Ejercicio8.hpp"
 #include "Ejercicio9.hpp"
 #include "Ejercicio10.hpp"
+#include "Ejercicio11.hpp"
+#include "Ejercicio12.hpp"
+#include "Ejercicio13.hpp"
 #include <iostream>
 
 int main()
@@ -109,12 +112,28 @@ int main()
   //EJERCICIO8
   // typename GrafoP<unsigned int>::vertice origen = 0;
   // typename GrafoP<unsigned int>::vertice destino = 3;
-
   // std::cout << trasbordo(autobusG5,trenG5,origen,destino) << std::endl;
 
   //EJERCICIO9
   // typename GrafoP<unsigned int>::vertice origen = 0;
   // typename GrafoP<unsigned int>::vertice destino = 5;
+  // vector<vertice> ruta;
+  // std::cout << "CosteTotal:" << " "<< viaje(autobusG9,trenG9,origen,destino,45,ruta) << std::endl;
+  //    std::cout << "Ruta" << std::endl;
+  // for (vertice i = 0; i < ruta.size(); ++i)
+  // {
+  //   std::cout << " " << ruta[i] << std::endl;
+  // }
 
-  // std::cout << viaje(autobusG9,trenG9,origen,destino,45) << std::endl;
+  //EJERCICIO10
+  // typename GrafoP<unsigned int>::vertice origen = 0;
+  // typename GrafoP<unsigned int>::vertice destino = 8;
+  // vector<vertice> ruta;
+  // std::cout << "CosteTotal:"
+  //           << " " << viaje3(autobusG9, trenG9, avionG10, origen, destino, 45, 32, ruta) << std::endl;
+  // std::cout << "Ruta" << std::endl;
+  // for (vertice i = 0; i < ruta.size(); ++i)
+  // {
+  //   std::cout << " " << ruta[i] << std::endl;
+  // }
 }
