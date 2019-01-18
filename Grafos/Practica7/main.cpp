@@ -150,12 +150,12 @@ int main()
 
   //EJERCICIO12
   vector<int> vF;
-  vF.push_back(2);
   vF.push_back(4);
+  vF.push_back(3);
 
   vector<int> vD;
-  vF.push_back(0);
-  vF.push_back(0);
+  vD.push_back(1);
+  vD.push_back(2);
 
   ciudadCosteraUnida(deimos, fobos, vF, vD);
 }

@@ -42,10 +42,10 @@ vertice mejorCiudadCostera(const GrafoP<tCoste> &ciudad, const vector<int> &cost
 template <typename tCoste>
 void ciudadCosteraUnida(const GrafoP<tCoste> &Deimos, const GrafoP<tCoste> &Fobos, const vector<int> &fobs, const vector<int> &deims)
 {
-    //vertice cD = mejorCiudadCostera(Deimos, deims);
+    vertice cD = mejorCiudadCostera(Deimos, deims);
     vertice cF = mejorCiudadCostera(Fobos, fobs);
     
 
-    //std::cout << "Mejor ciudad costera Deimos:" << cD << std::endl;
+    std::cout << "Mejor ciudad costera Deimos:" << cD << std::endl;
     std::cout << "Mejor ciudad costera Fobos:" << cF << std::endl;
 }
