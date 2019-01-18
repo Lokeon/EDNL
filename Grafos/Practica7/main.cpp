@@ -150,7 +150,7 @@ int main()
 
   //EJERCICIO12
   vector<int> vF;
-  vF.push_back(3);
+  vF.push_back(2);
   vF.push_back(4);
 
   vector<int> vD;
