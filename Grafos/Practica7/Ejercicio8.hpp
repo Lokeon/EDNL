@@ -5,7 +5,7 @@
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
 template <typename tCoste>
-int trasbordo(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice origen, vertice destino)
+tCoste trasbordo(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice origen, vertice destino)
 {
     vector<vertice> vV(Aut.numVert());
     vector<tCoste> origenBus, origenTren, destinoBus, destinoTren;
