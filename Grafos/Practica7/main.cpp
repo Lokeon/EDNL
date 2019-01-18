@@ -149,13 +149,13 @@ int main()
   // huries(autobusG9, trenG9, avionG10, puente, costesIsla);
 
   //EJERCICIO12
-  vector<int> vF;
-  vF.push_back(4);
-  vF.push_back(3);
+  // vector<int> vF;
+  // vF.push_back(4);
+  // vF.push_back(3);
 
-  vector<int> vD;
-  vD.push_back(1);
-  vD.push_back(2);
+  // vector<int> vD;
+  // vD.push_back(1);
+  // vD.push_back(2);
 
-  ciudadCosteraUnida(deimos, fobos, vF, vD);
+  // ciudadCosteraUnida(deimos, fobos, vF, vD);
 }
