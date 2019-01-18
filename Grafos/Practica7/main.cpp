@@ -25,6 +25,8 @@ int main()
   GrafoP<unsigned int> trenG9("TrenEj9.dat");
   GrafoP<unsigned int> autobusG9("AutobusEj9.dat");
   GrafoP<unsigned int> avionG10("AvionEj10.dat");
+  GrafoP<unsigned int> fobos("Fobos.dat");
+  GrafoP<unsigned int> deimos("Deimos.dat");
 
   // EJERCICIO 1
   // typename GrafoP<unsigned int>::vertice origen;
@@ -136,4 +138,24 @@ int main()
   // {
   //   std::cout << " " << ruta[i] << std::endl;
   // }
+
+  //EJERCICIO11
+  // vector<coordenada> puente;
+  // matriz<unsigned int> costesIsla;
+  // puente.push_back(coordenada(3, 1));
+  // puente.push_back(coordenada(5, 7));
+  // puente.push_back(coordenada(2, 4));
+
+  // huries(autobusG9, trenG9, avionG10, puente, costesIsla);
+
+  //EJERCICIO12
+  vector<int> vF;
+  vF.push_back(3);
+  vF.push_back(4);
+
+  vector<int> vD;
+  vF.push_back(0);
+  vF.push_back(0);
+
+  ciudadCosteraUnida(deimos, fobos, vF, vD);
 }
