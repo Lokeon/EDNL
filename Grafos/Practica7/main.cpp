@@ -8,6 +8,7 @@
 #include "Ejercicio7.hpp"
 #include "Ejercicio8.hpp"
 #include "Ejercicio9.hpp"
+#include "Ejercicio10.hpp"
 #include <iostream>
 
 int main()
@@ -20,6 +21,7 @@ int main()
   GrafoP<unsigned int> autobusG5("AutobusEj5.dat");
   GrafoP<unsigned int> trenG9("TrenEj9.dat");
   GrafoP<unsigned int> autobusG9("AutobusEj9.dat");
+  GrafoP<unsigned int> avionG10("AvionEj10.dat");
 
   // EJERCICIO 1
   // typename GrafoP<unsigned int>::vertice origen;
@@ -115,5 +117,4 @@ int main()
   // typename GrafoP<unsigned int>::vertice destino = 5;
 
   // std::cout << viaje(autobusG9,trenG9,origen,destino,45) << std::endl;
-
 }
