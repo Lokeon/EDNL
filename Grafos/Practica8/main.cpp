@@ -25,7 +25,7 @@ int main()
   // Los 1 que aparecen deberian de ser Infinitos, pero igualmente funciona
   //std::cout << emasejer(G4) << std::endl;
 
-  //EJERCICIO4
-  // Los 1 que aparecen deberian de ser Infinitos, pero igualmente funciona
-  //std::cout << emasejer(G4) << std::endl;
+  //EJERCICIO5
+  std::cout << "Coste fibra:"
+            << " " << reteUni3(G4) << std::endl;
 }
