@@ -241,7 +241,7 @@ matriz<tCoste> Floyd(const GrafoP<tCoste> &G,
          }
    return A;
 }
-
+// NO FUNCIONA, hace lo que quiere
 template <typename tCoste>
 matriz<tCoste> FloydCostesMaximos(const GrafoP<tCoste> &G,
                                   matriz<typename GrafoP<tCoste>::vertice> &P)
@@ -399,6 +399,36 @@ GrafoP<tCoste> Kruskall(const GrafoP<tCoste> &G)
       }
    }
    return g;
+}
+
+template <typename tCoste>
+GrafoP<tCoste> KruskallMaximo(const GrafoP<tCoste> &G)
+{
+   GrafoP<tCoste> A (G.numVert()), arbolGeneradorCosteMaximo (G.numVert());
+
+   A = G;
+   // Escalamos el Grafo recibido -1 para invertir
+   // los valores
+   escalar(A);
+   // usamos Kruskall con costes negativos
+   arbolGeneradorCosteMaximo = Kruskall(A);
+   // lo volvemos a escalar y obtenemos los costes maximos
+   escalar(arbolGeneradorCosteMaximo);
+
+   return arbolGeneradorCosteMaximo;
+}
+
+template <typename tCoste>
+void escalar(GrafoP<tCoste> &G)
+{
+   typedef typename GrafoP<tCoste>::vertice vertice;
+   for (vertice i = 0; i < G.numVert(); ++i)
+   {
+      for (vertice j = 0; j < G.numVert(); ++j)
+      {
+         G[i][j] *= (-1);
+      }
+   }
 }
 
 #endif // ALG_GRAFO_P_H

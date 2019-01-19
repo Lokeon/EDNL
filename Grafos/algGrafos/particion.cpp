@@ -13,7 +13,8 @@ void Particion::unir(int a, int b)
 {
    if (padre[b] < padre[a])
       padre[a] = b;
-   else {
+   else
+   {
       if (padre[a] == padre[b])
          padre[a]--; // El �rbol resultante tiene un nivel m�s.
       padre[b] = a;
@@ -28,7 +29,8 @@ int Particion::encontrar(int x) const
       raiz = padre[raiz];
    // Compresi�n del camino de x a ra�z: Los nodos
    // del camino se hacen hijos de la ra�z
-   while (padre[x] > -1) {
+   while (padre[x] > -1)
+   {
       y = padre[x];
       padre[x] = raiz;
       x = y;
