@@ -13,11 +13,14 @@ tCoste reteUni3(const GrafoP<tCoste> &G)
     A = Kruskall(G);
     fibra = 0;
 
+    //std::cout << A << std::endl;
+
     for (vertice i = 0; i < G.numVert(); ++i)
     {
-        for (vertice j = 0; j < G.numVert(); ++j)
+        for (vertice j = 0; j < G.numVert(); ++j) // Esto es importante, si no te va a salir el
+                                                  // doble del coste real
         {
-            if (A[i][j] != Grafo<tCoste>::INFINITO)
+            if (A[i][j] != GrafoP<tCoste>::INFINITO)
             {
                 fibra += A[i][j];
             }

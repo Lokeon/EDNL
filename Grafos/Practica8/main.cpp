@@ -12,6 +12,7 @@ int main()
 {
   // Recordar meter una matriz de costes no dirigida
   GrafoP<unsigned int> G4("Ejercicio4.dat");
+  GrafoP<unsigned int> G6("Ejercicio6.dat");
 
   //EJERCICIO1
   // Me da pereza probarlo. . .
@@ -26,6 +27,9 @@ int main()
   //std::cout << emasejer(G4) << std::endl;
 
   //EJERCICIO5
-  std::cout << "Coste fibra:"
-            << " " << reteUni3(G4) << std::endl;
+  // std::cout << "Coste fibra:"
+  //           << " " << reteUni3(G4) << std::endl;
+
+  //EJERCICIO6
+  emasejer2(G4,G6,16,12);
 }
