@@ -31,5 +31,8 @@ int main()
   //           << " " << reteUni3(G4) << std::endl;
 
   //EJERCICIO6
-  emasejer2(G4,G6,16,12);
+  // emasejer2(G4,G6,16,12);
+
+  //EJERCICIO7
+  // Pereza de la probación . . .
 }
