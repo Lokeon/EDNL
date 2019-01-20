@@ -1,161 +1,189 @@
 #include "../algGrafos/alg_grafoPMC.hpp"
-#include "../algGrafos/alg_grafo_E-S.hpp"
-#include "Ejercicio1.hpp"
-#include "Ejercicio3.hpp"
-#include "Ejercicio4.hpp"
-#include "Ejercicio5.hpp"
-#include "Ejercicio6.hpp"
-#include "Ejercicio7.hpp"
-#include "Ejercicio8.hpp"
-#include "Ejercicio9.hpp"
-#include "Ejercicio10.hpp"
-#include "Ejercicio11.hpp"
-#include "Ejercicio12.hpp"
-#include "Ejercicio13.hpp"
 #include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+template <typename tCoste>
+int tresmedios(const GrafoP<tCoste>& Bus,const GrafoP<tCoste>& Tren,const GrafoP<tCoste>& Avion,typename GrafoP<tCoste>::vertice origen,typename GrafoP<tCoste>::vertice destino,tCoste trenbus,tCoste avionbustren,vector<typename GrafoP<tCoste>::vertice>& P)
+{
+
+  typedef typename GrafoP<tCoste>::vertice vertice;
+
+  GrafoP<tCoste> t(Bus.numVert()+Tren.numVert()+Avion.numVert());
+
+  //Inicializamos la matriz
+  for(int i=0;i<Bus.numVert();++i)
+  {
+    for(int j=0;j<Bus.numVert();++j)
+    {
+      t[i][j]=Bus[i][j];
+    }
+  }
+
+  for(int i=Bus.numVert();i<Bus.numVert()+Tren.numVert();++i)
+  {
+    for(int j=Bus.numVert();j<Bus.numVert()+Tren.numVert();++j)
+    {
+      t[i][j]=Tren[i-Bus.numVert()][j-Bus.numVert()];
+    }
+  }
+
+  for(int i=Bus.numVert()+Tren.numVert();i<Bus.numVert()+Tren.numVert()+Avion.numVert();++i)
+  {
+    for(int j=Bus.numVert()+Tren.numVert();j<Bus.numVert()+Tren.numVert()+Avion.numVert();++j)
+    {
+      t[i][j]=Avion[i-(Bus.numVert()+Tren.numVert())][j-(Bus.numVert()+Tren.numVert())];
+    }
+  }
+
+  cout<<t<<endl;
+
+  //Ahora las tasas
+  //Primero las de bus-tren y viceversa
+
+
+    int i=0;
+    int j=Bus.numVert();
+    while(j!=Bus.numVert()+Tren.numVert())
+      {
+        t[i][j]=trenbus;
+        i++;
+        j++;
+      }
+
+    i=Bus.numVert();
+    j=0;
+    while(j!=Bus.numVert())
+      {
+        t[i][j]=trenbus;
+        i++;
+        j++;
+      }
+
+    //Despues las del aeropuerto
+
+    i=0;
+    j=Bus.numVert()+Tren.numVert();
+    while(j!=Bus.numVert()+Tren.numVert()+Avion.numVert())
+    {
+      t[i][j]=avionbustren;
+      i++;
+      j++;
+    }
+
+    i=Bus.numVert();
+    j=Bus.numVert()+Tren.numVert();
+    while(j!=Bus.numVert()+Tren.numVert()+Avion.numVert())
+    {
+      t[i][j]=avionbustren;
+      i++;
+      j++;
+    }
+
+    i=Bus.numVert()+Tren.numVert();
+    j=0;
+    while(j!=Bus.numVert())
+    {
+      t[i][j]=avionbustren;
+      i++;
+      j++;
+    }
+
+    i=Bus.numVert()+Tren.numVert();
+    j=Bus.numVert();
+    while(j!=Bus.numVert()+Tren.numVert())
+    {
+      t[i][j]=avionbustren;
+      i++;
+      j++;
+    }
+
+    i=Bus.numVert()+Tren.numVert();
+    j=Bus.numVert()+Tren.numVert();
+    while(j!=Bus.numVert()+Tren.numVert()+Avion.numVert())
+    {
+      t[i][j]=avionbustren;
+      i++;
+      j++;
+    }
+    cout<<t<<endl;
+
+    vector<vertice> P1(Tren.numVert()+Bus.numVert()+Avion.numVert());
+    vector<vertice> P2(Tren.numVert()+Bus.numVert()+Avion.numVert());
+    vector<vertice> P3(Tren.numVert()+Bus.numVert()+Avion.numVert());
+
+    vector<tCoste> c1= Dijkstra(t,origen,P1);
+    vector<tCoste> c2= Dijkstra(t,origen+Bus.numVert(),P2);
+    vector<tCoste> c3= Dijkstra(t,origen+Bus.numVert()+Tren.numVert(),P3);
+
+    tCoste d1=min(c1[destino],min(c1[destino+Bus.numVert()],c1[destino+Bus.numVert()+Tren.numVert()]));
+    tCoste d2=min(c2[destino],min(c2[destino+Bus.numVert()],c2[destino+Bus.numVert()+Tren.numVert()]));
+    tCoste d3=min(c3[destino],min(c3[destino+Bus.numVert()],c3[destino+Bus.numVert()+Tren.numVert()]));
+
+
+    if(d1<d2)
+    {
+      if(d1<d3)
+      {
+        P=P1;
+        return d1;
+      }
+      else
+      {
+        P=P3;
+        return d3;
+      }
+    }
+    else
+    {
+      if(d2<d3)
+      {
+        P=P2;
+        return d2;
+      }
+      else
+      {
+        P=P3;
+        return d3;
+      }
+    }
+
+
+
+
+
+
+
+}
+
 
 int main()
 {
-  GrafoP<unsigned int> G1("Ejercicio1.dat");
-  GrafoP<unsigned int> G3("Ejercicio3.dat");
-  GrafoP<unsigned int> G4("Ejercicio4.dat");
-  GrafoP<unsigned int> avionG5("AvionEj5.dat");
-  GrafoP<unsigned int> trenG5("TrenEj5.dat");
-  GrafoP<unsigned int> autobusG5("AutobusEj5.dat");
-  GrafoP<unsigned int> trenG9("TrenEj9.dat");
-  GrafoP<unsigned int> autobusG9("AutobusEj9.dat");
-  GrafoP<unsigned int> avionG10("AvionEj10.dat");
-  GrafoP<unsigned int> fobos("Fobos.dat");
-  GrafoP<unsigned int> deimos("Deimos.dat");
 
-  // EJERCICIO 1
-  // typename GrafoP<unsigned int>::vertice origen;
-  // typename GrafoP<unsigned int>::vertice destino;
-  //           << " " << costeViaje(G1, origen, destino) << " "
-  // std::cout << "CosteTotal:"
-  //           << "Origen: "
-  //           << origen << " "
-  //           << "Destino: "
-  //           << " " << destino << std::endl;
+  typedef typename GrafoP<int>::vertice vertice;
 
-  //EJERCICIO 3
-  // typename GrafoP<unsigned int>::vertice origen3 = 0;
-  // std::vector<unsigned int> cantidadCiudad; // Para Comprobar
-  // cantidadCiudad.push_back(0);
-  // cantidadCiudad.push_back(0);
-  // cantidadCiudad.push_back(0);
-  // cantidadCiudad.push_back(0);
-  // std::vector<unsigned int> capacidadCiudad;
-  // capacidadCiudad.push_back(10);
-  // capacidadCiudad.push_back(10);
-  // capacidadCiudad.push_back(5);
-  // capacidadCiudad.push_back(3);
-  // std::vector<unsigned int> porcentajeCiudad;
-  // porcentajeCiudad.push_back(15);
-  // porcentajeCiudad.push_back(30);
-  // porcentajeCiudad.push_back(20);
-  // porcentajeCiudad.push_back(23);
+  string a="AutobusEj9.dat";
+  string b="TrenEj9.dat";
+  string c="AvionEj10.dat";
 
-  // std::cout << "Coste: " << distribucionAlmacen(G3, origen3, 20, cantidadCiudad, capacidadCiudad, porcentajeCiudad) << std::endl;
-  // for (int i = 0; i < cantidadCiudad.size(); ++i)
-  // {
-  //   std::cout << "Ciudad" << i << " "
-  //             << "Cantidad Distribuida:" << cantidadCiudad[i] << std::endl;
-  // }
+  GrafoP<int> Bus(a);
+  GrafoP<int> Tren(b);
+  GrafoP<int> Avion(c);
 
-  //EJERCICIO4
-  // typename GrafoP<unsigned int>::vertice capital = 0;
-  // std::vector<unsigned int> parteDiario; // Para Comprobar
-  // parteDiario.push_back(2);
-  // parteDiario.push_back(5);
-  // parteDiario.push_back(4);
-  // parteDiario.push_back(5);
+  vector<vertice> P;
+  int trenbus=5;
+  int avionbustren=10;
+  vertice origen=0;
+  vertice destino=3;
 
-  // std::cout << "Kilometros totales:"
-  //           << " " << cementosZuelandia(G4, capital, parteDiario) << std::endl;
+  int coste=tresmedios(Bus,Tren,Avion,origen,destino,trenbus,avionbustren,P);
+  cout<<"El coste min es :"<<coste<<endl;
+  cout<<"El camino es :"<<endl;
 
-  //EJERCICIO5
-  // unsigned int presupuesto = 50;
-  // typename GrafoP<unsigned int>::vertice ciudad = 0;
-  // vector<bool> fin = alergia(autobusG5, avionG5, trenG5, presupuesto, ciudad);
+  for(int i=0;i<P.size();++i)
+  {
+    cout<<" "<<P[i];
+  }
 
-  // for (int i = 0; i < autobusG5.numVert(); ++i)
-  // {
-  //   std::cout << "Ciudad" << i << " " <<  fin[i] << std::endl;
-  // }
-
-  //EJERCICIO6
-  // typename GrafoP<unsigned int>::vertice ciudad = 2;
-  // matriz<unsigned int> fin = agencia(trenG5, autobusG5, ciudad);
-
-  // for (int i = 0; i < autobusG5.numVert(); ++i)
-  // {
-  //   for (int j = 0; j < autobusG5.numVert(); ++j)
-  //   {
-  //     std::cout << " " << fin[i][j];
-  //   }
-  //   std::cout << std::endl;
-  // }
-
-  //EJERCICIO7
-  // typename GrafoP<unsigned int>::vertice cambio1 = 1;
-  // typename GrafoP<unsigned int>::vertice cambio2 = 2;
-  // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 3;
-
-  // vector<vertice> vertices;
-
-  // std::cout << Cambios2(trenG5, autobusG5, cambio1, cambio2, origen, destino, vertices) << std::endl;
-  // for (int i = 0; i < vertices.size(); ++i)
-  // {
-  //   std::cout <<" "<<  vertices[i];
-  // }
-
-  //EJERCICIO8
-  // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 3;
-  // std::cout << trasbordo(autobusG5,trenG5,origen,destino) << std::endl;
-
-  //EJERCICIO9
-  // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 2;
-  // vector<vertice> ruta;
-  // std::cout << "CosteTotal:" << " "<< viaje(autobusG9,trenG9,origen,destino,45,ruta) << std::endl;
-  //    std::cout << "Ruta" << std::endl;
-  // for (vertice i = 0; i < ruta.size(); ++i)
-  // {
-  //   std::cout << " " << ruta[i] ;
-  // }
-
-  //EJERCICIO10
-  // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 2;
-  // vector<vertice> ruta;
-  // std::cout << "CosteTotal:"
-  //           << " " << viaje3(autobusG9, trenG9, avionG10, origen, destino, 45, 32, ruta) << std::endl;
-  // std::cout << "Ruta" << std::endl;
-  // for (vertice i = 0; i < ruta.size(); ++i)
-  // {
-  //   std::cout << " " << ruta[i];
-  // }
-
-  //EJERCICIO11
-  // vector<coordenada> puente;
-  // matriz<unsigned int> costesIsla;
-  // puente.push_back(coordenada(3, 1));
-  // puente.push_back(coordenada(5, 7));
-  // puente.push_back(coordenada(2, 4));
-
-  // huries(autobusG9, trenG9, avionG10, puente, costesIsla);
-
-  //EJERCICIO12
-  // vector<int> vF;
-  // vF.push_back(4);
-  // vF.push_back(3);
-
-  // vector<int> vD;
-  // vD.push_back(1);
-  // vD.push_back(2);
-
-  // ciudadCosteraUnida(deimos, fobos, vF, vD);
 }
