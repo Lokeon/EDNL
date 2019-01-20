@@ -16,11 +16,13 @@ int main()
 
   //EJERCICIO1
   // Me da pereza probarlo. . .
-  //
   // Lista<coordenada> carreteras;
   // GrafoP<unsigned int> costes(G1.numVert());
 
   // crearGrafo(G1, carreteras, costes);
+
+  //EJERCICIO2
+  // Me da pereza probarlo. . ., es como el de arriba pero con una cosa mas
 
   //EJERCICIO4
   // Los 1 que aparecen deberian de ser Infinitos, pero igualmente funciona
@@ -34,5 +36,5 @@ int main()
   // emasejer2(G4,G6,16,12);
 
   //EJERCICIO7
-  // Pereza de la probación . . .
+  // Pereza de la probación . . . creo que mas o menos tiene sentido lo que he realizado
 }
