@@ -2,7 +2,6 @@
 #include <iostream>
 #include <algorithm>
 
-// ARREGLAR
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
 template <typename tCoste>

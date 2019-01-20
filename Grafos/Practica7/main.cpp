@@ -118,25 +118,25 @@ int main()
 
   //EJERCICIO9
   // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 5;
+  // typename GrafoP<unsigned int>::vertice destino = 2;
   // vector<vertice> ruta;
   // std::cout << "CosteTotal:" << " "<< viaje(autobusG9,trenG9,origen,destino,45,ruta) << std::endl;
   //    std::cout << "Ruta" << std::endl;
   // for (vertice i = 0; i < ruta.size(); ++i)
   // {
-  //   std::cout << " " << ruta[i] << std::endl;
+  //   std::cout << " " << ruta[i] ;
   // }
 
   //EJERCICIO10
   // typename GrafoP<unsigned int>::vertice origen = 0;
-  // typename GrafoP<unsigned int>::vertice destino = 8;
+  // typename GrafoP<unsigned int>::vertice destino = 2;
   // vector<vertice> ruta;
   // std::cout << "CosteTotal:"
   //           << " " << viaje3(autobusG9, trenG9, avionG10, origen, destino, 45, 32, ruta) << std::endl;
   // std::cout << "Ruta" << std::endl;
   // for (vertice i = 0; i < ruta.size(); ++i)
   // {
-  //   std::cout << " " << ruta[i] << std::endl;
+  //   std::cout << " " << ruta[i];
   // }
 
   //EJERCICIO11

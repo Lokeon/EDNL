@@ -44,50 +44,62 @@ tCoste viaje3(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, const Grafo
         TrenAutAvi[i][i] = 0;
     }
 
-    // Costes taxi1 - Como el Ejercicio9, modificar las conexiones de los taxis para ver como
-    // cambia los valores del coste minimo
-    for (vertice i = 0; i < Tren.numVert(); ++i)
+    // Costes taxi1, se puede mejorar la introduccion de los costes de los taxis
+    // pero me di cuenta tarde, y pereza de ponerlo "bonito"
+    int i = 0;
+    for (vertice j = Tren.numVert(); j < (Tren.numVert() + Aut.numVert()); ++j)
     {
-        for (vertice j = Tren.numVert(); j < Tren.numVert() + Aut.numVert(); ++j)
-        {
-            TrenAutAvi[i][j] = taxi1;
-        }
+        TrenAutAvi[i][j] = taxi1;
+        ++i;
     }
 
-    for (vertice i = Tren.numVert(); i < Tren.numVert() + Aut.numVert(); ++i)
+    i = Tren.numVert();
+    for (vertice j = 0; j < Tren.numVert(); ++j)
     {
-        for (vertice j = 0; j < Aut.numVert(); ++j)
-        {
-            TrenAutAvi[i][j] = taxi1;
-        }
+        TrenAutAvi[i][j] = taxi1;
+        ++i;
     }
 
     // Costes taxi2
-    for (vertice i = 0; i < Tren.numVert() + Aut.numVert(); ++i)
+
+    i = 0;
+    for (vertice j = Tren.numVert() + Aut.numVert(); j < Tren.numVert() + Aut.numVert() + Avi.numVert(); ++j)
     {
-        for (vertice j = Tren.numVert() + Aut.numVert(); j < Tren.numVert() + Aut.numVert() + Avi.numVert(); ++j)
-        {
-            TrenAutAvi[i][j] = taxi2;
-        }
+        TrenAutAvi[i][j] = taxi2;
+        ++i;
     }
 
-    for (vertice i = Tren.numVert() + Aut.numVert(); i < Tren.numVert() + Aut.numVert() + Avi.numVert(); ++i)
+    i = Aut.numVert() + Avi.numVert();
+    for (vertice j = 0; j < Aut.numVert(); ++j)
     {
-        for (vertice j = 0; j < Aut.numVert() + Avi.numVert(); ++j)
-        {
-            TrenAutAvi[i][j] = taxi2;
-        }
+        TrenAutAvi[i][j] = taxi2;
+        ++i;
     }
 
-    //std::cout << TrenAutAvi << std::endl;
+    i = Aut.numVert();
+    for (vertice j = Tren.numVert() + Aut.numVert(); j < Tren.numVert() + Aut.numVert() + Avi.numVert(); ++j)
+    {
+        TrenAutAvi[i][j] = taxi2;
+        ++i;
+    }
+
+    i = Aut.numVert() + Avi.numVert();
+    for (vertice j = Aut.numVert(); j < Aut.numVert() + Avi.numVert(); ++j)
+    {
+        TrenAutAvi[i][j] = taxi2;
+        ++i;
+    }
+
+    std::cout << TrenAutAvi << std::endl;
 
     trenInicio = Dijkstra(TrenAutAvi, origen, vV1);
     busInicio = Dijkstra(TrenAutAvi, origen + Aut.numVert(), vV2);
-    aviInicio = Dijkstra(TrenAutAvi, origen + Aut.numVert() * 2, vV3);
+    aviInicio = Dijkstra(TrenAutAvi, origen + Aut.numVert() + Avi.numVert(), vV3);
 
     if (aviInicio[destino] > busInicio[destino] && busInicio[destino] > trenInicio[destino])
     {
         ruta = vV1;
+        std::cout << "Ruta Tren coste:" << std::endl;
         return trenInicio[destino];
     }
     else
@@ -95,12 +107,14 @@ tCoste viaje3(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, const Grafo
         if (aviInicio[destino] < busInicio[destino] && busInicio[destino] < trenInicio[destino])
         {
             ruta = vV3;
-            return aviInicio[destino];
+            std::cout << "Ruta Avion coste:" << std::endl;
+            return aviInicio[destino + Aut.numVert()];
         }
         else
         {
             ruta = vV2;
-            return busInicio[destino];
+            std::cout << "Ruta Autobus coste:" << std::endl;
+            return busInicio[destino + Aut.numVert() + Avi.numVert()];
         }
     }
 }

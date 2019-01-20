@@ -28,22 +28,19 @@ tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice orig
         }
     }
 
-    // Coste del Taxi, modificar ambos bucles anidados porque si no siempre saldra como valor min
-    // el del taxi ya que creo lineas "directas" a los nodos del otro Grafo que uno
-    for (vertice i = 0; i < (Tren.numVert()); ++i)
+    // Costes Taxi
+    int i = 0;
+    for (vertice j = Tren.numVert(); j < (Tren.numVert() + Aut.numVert()); ++j)
     {
-        for (vertice j = Tren.numVert(); j < (Tren.numVert() + Aut.numVert()); ++j)
-        {
-            TrenAut[i][j] = costeTaxi;
-        }
+        TrenAut[i][j] = costeTaxi;
+        ++i;
     }
 
-    for (vertice i = Tren.numVert(); i < (Tren.numVert() + Aut.numVert()); ++i)
+    i = Tren.numVert();
+    for (vertice j = 0; j < Tren.numVert(); ++j)
     {
-        for (vertice j = 0; j < Tren.numVert(); ++j)
-        {
-            TrenAut[i][j] = costeTaxi;
-        }
+        TrenAut[i][j] = costeTaxi;
+        ++i;
     }
 
     //Poner a 0 la diagonal
@@ -53,7 +50,7 @@ tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice orig
     }
 
     // Mirar grafo para entender lo de arriba
-    //std::cout << TrenAut << std::endl;
+    std::cout << TrenAut << std::endl;
 
     trenInicio = Dijkstra(TrenAut, origen, vV1);
     busInicio = Dijkstra(TrenAut, origen + Aut.numVert(), vV2);
@@ -61,11 +58,13 @@ tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice orig
     if (trenInicio[destino] < busInicio[destino])
     {
         ruta = vV1;
+        std::cout << "Ruta Tren coste :" << std::endl;
         return trenInicio[destino];
     }
     else
     {
         ruta = vV2;
-        return busInicio[destino];
+        std::cout << "Ruta Autobus coste:" << std::endl;
+        return busInicio[destino + Aut.numVert()];
     }
 }
