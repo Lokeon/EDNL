@@ -75,7 +75,7 @@ int main()
   //           << " " << cementosZuelandia(G4, capital, parteDiario) << std::endl;
 
   //EJERCICIO5
-  // unsigned int presupuesto = 55;
+  // unsigned int presupuesto = 50;
   // typename GrafoP<unsigned int>::vertice ciudad = 0;
   // vector<bool> fin = alergia(autobusG5, avionG5, trenG5, presupuesto, ciudad);
 

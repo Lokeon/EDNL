@@ -36,11 +36,11 @@ double distanciaEuclidea(const Lista<coordenada> &lineasAerea, int i, int j)
 GrafoP<double> crearGrafo(const Grafo &G, const Lista<coordenada> &lineasAereas, GrafoP<double> &Gr)
 {
     int posi, posj;
-    double coste;
+    double coste, min;
 
     for (vertice i = 0; i < G.numVert(); ++i)
     {
-        int min = GrafoP<double>::INFINITO;
+        min = GrafoP<double>::INFINITO;
 
         for (vertice j = 0; j < G.numVert(); j++)
         {
@@ -58,6 +58,7 @@ GrafoP<double> crearGrafo(const Grafo &G, const Lista<coordenada> &lineasAereas,
                 Gr[i][j] = GrafoP<double>::INFINITO;
         }
         Gr[posi][posj] = min;
+
     }
 
     std::cout << Gr << std::endl;

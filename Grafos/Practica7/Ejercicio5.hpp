@@ -2,7 +2,7 @@
 #include <iostream>
 #include <algorithm>
 
-// ARREGLAR 
+// ARREGLAR
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
 template <typename tCoste>
@@ -14,7 +14,7 @@ vector<bool> alergia(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Avi, const
     vertice posicionj = 0;
     vector<tCoste> costesFinales(Aut.numVert());
     vector<bool> ciudades(Aut.numVert(), false);
-    tCoste min = GrafoP<tCoste>::INFINITO;
+    tCoste min;
 
     std::cout << "Alergia:" << std::endl;
     std::cin >> alergia;
@@ -32,6 +32,7 @@ vector<bool> alergia(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Avi, const
             }
         }
 
+        std::cout << unionMinimo << std::endl;
         break;
     case 2:
         for (vertice i = 0; i < Aut.numVert(); ++i)
@@ -56,6 +57,7 @@ vector<bool> alergia(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Avi, const
     for (vertice i = 0; i < costesFinales.size(); ++i)
     {
         costesFinales = Dijkstra(unionMinimo, ciudad, vV);
+        min = GrafoP<tCoste>::INFINITO;
 
         for (vertice j = 0; j < costesFinales.size(); ++j)
         {
@@ -77,7 +79,6 @@ vector<bool> alergia(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Avi, const
             std::cout << presupuesto << std::endl;
             return ciudades;
         }
-        min = GrafoP<tCoste>::INFINITO;
         ciudad = posicionj;
     }
     std::cout << presupuesto << std::endl;
