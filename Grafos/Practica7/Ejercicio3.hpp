@@ -23,13 +23,12 @@ tCoste distribucionAlmacen(const GrafoP<tCoste> &G, vertice origen, int stock, v
         ++j;
     }
 
-    std::cout << vC << std::endl;
-
-    i = 1;
-    j = 0;
+    //std::cout << vC << std::endl;
 
     while (stock != 0)
     {
+        j = 0;
+        i = 1;
         tCoste max = GrafoP<tCoste>::INFINITO; // Para mirar el menor coste
         while (i < N)
         {
@@ -51,9 +50,6 @@ tCoste distribucionAlmacen(const GrafoP<tCoste> &G, vertice origen, int stock, v
 
             coste += vC[posicioni];
         }
-
-        j = 0;
-        i = 1;
     }
 
     return coste;

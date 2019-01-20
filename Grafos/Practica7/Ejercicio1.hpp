@@ -4,7 +4,7 @@
 
 typedef typename GrafoP<unsigned int>::vertice vertice;
 
-// INCOMPLETO
+// ARREGLAR no me funciona Floyd con los costes Maximos
 
 template <typename tCoste>
 tCoste costeViaje(const GrafoP<tCoste> &G, vertice &origen, vertice &destino)

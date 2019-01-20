@@ -46,7 +46,7 @@ int main()
   // cantidadCiudad.push_back(0);
   // cantidadCiudad.push_back(0);
   // std::vector<unsigned int> capacidadCiudad;
-  // capacidadCiudad.push_back(15);
+  // capacidadCiudad.push_back(10);
   // capacidadCiudad.push_back(10);
   // capacidadCiudad.push_back(5);
   // capacidadCiudad.push_back(3);
