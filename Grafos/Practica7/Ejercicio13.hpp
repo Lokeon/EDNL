@@ -22,8 +22,9 @@ vertice mejorCiudadCostera1(const GrafoP<tCoste> &G, const Lista<vertice> &isla)
     typedef typename Lista<vertice>::posicion posicion;
 
     vector<vertice> vV(G.numVert());
-    vertice min = GrafoP<tCoste>::INFINITO;
+    tCoste min = GrafoP<tCoste>::INFINITO;
     tcoste coste;
+    vertice mejor;
 
     for (posicion pos = isla.primera(); pos != isla.fin(); pos = isla.siguiente(pos))
     {
@@ -31,10 +32,11 @@ vertice mejorCiudadCostera1(const GrafoP<tCoste> &G, const Lista<vertice> &isla)
         if (min > coste)
         {
             min = coste;
+            mejor = isla.elemento(pos);
         }
     }
 
-    return min;
+    return mejor;
 }
 
 // bastante feo visualmente, mejor quedaria todo en 3 variables
