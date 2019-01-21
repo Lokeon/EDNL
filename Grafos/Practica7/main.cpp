@@ -158,4 +158,7 @@ int main()
   // vD.push_back(2);
 
   // ciudadCosteraUnida(deimos, fobos, vF, vD);
+
+  //EJERCICIO13
+  // Pereza de la probración  
 }
