@@ -3,7 +3,6 @@
 #include "Ejercicio2.hpp"
 #include "Ejercicio3.hpp"
 #include "Ejercicio4.hpp"
-//#include "Ejercicio4v2.hpp"
 #include <iostream>
 
 int main()
@@ -23,5 +22,4 @@ int main()
   // std::cout << "DijkstraInverso(destino 4)" << DijkstraInv(Gr, destino, vertices) << std::endl;
   // std::cout << "Aciclicos:" << aciclico(Gs) << std::endl
   Zuelandia(Zue, capital);
-  //Zuelandia2(Zue,capital);
 }
