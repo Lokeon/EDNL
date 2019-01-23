@@ -24,7 +24,7 @@ tCoste distribucionAlmacen(const GrafoP<tCoste> &G, vertice origen, int stock, v
     }
 
     //std::cout << vC << std::endl;
-
+    // Cambiar condiciones, ya que esta hecho para que el origen sea 0
     while (stock != 0)
     {
         j = 0;

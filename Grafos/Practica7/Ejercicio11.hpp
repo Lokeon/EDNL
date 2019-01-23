@@ -3,7 +3,8 @@
 #include <algorithm>
 
 typedef typename GrafoP<unsigned int>::vertice vertice;
-
+// la coordenada ha sido por propia interpretacion, se podria hacer sin esta,
+// suponiendo que te dan 3 listas
 struct coordenada
 {
     int x_, y_;
