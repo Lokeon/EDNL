@@ -192,8 +192,6 @@ template <typename T>
 void Abb<T>::poda(const T& elto)
 {
      buscar(elto).~Abb() ;
-
-
 }*/
 
 template <typename T>
