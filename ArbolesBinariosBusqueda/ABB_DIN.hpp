@@ -196,7 +196,6 @@ void Abb<T>::poda(const T& elto)
 
 }*/
 
-
 template <typename T>
 void Abb<T>::podar(const T &elto)
 {
@@ -229,7 +228,7 @@ int Abb<T>::tamano() const
         return tamano_rec(r);
 }
 
-// Funcion extra creada por mi 
+// Funcion extra creada por mi
 template <typename T>
 int Abb<T>::tamano_rec(arbol *n) const
 {
