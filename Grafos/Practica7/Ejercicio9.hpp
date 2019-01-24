@@ -53,7 +53,7 @@ tCoste viaje(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Tren, vertice orig
     std::cout << TrenAut << std::endl;
 
     trenInicio = Dijkstra(TrenAut, origen, vV1);
-    busInicio = Dijkstra(TrenAut, origen + Aut.numVert(), vV2);
+    busInicio = Dijkstra(TrenAut, origen + Tren.numVert(), vV2);
 
     if (trenInicio[destino] < busInicio[destino])
     {
