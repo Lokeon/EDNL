@@ -27,11 +27,12 @@ int gradoMedio(const Agen<T> &A, typename Agen<T>::nodo nA)
             gradoMT += gradoMedio(A, hijo);
             hijo = A.hermDrcho(hijo);
         }
-        if(tieneHijo(A,nA))
+        if (tieneHijo(A, nA))
         {
             return 1 + gradoMT;
         }
-        else{
+        else
+        {
             return gradoMT;
         }
     }
@@ -94,4 +95,3 @@ int contarHijos(const Agen<T> &A, typename Agen<T>::nodo nA)
 
     return hijos;
 }
-
