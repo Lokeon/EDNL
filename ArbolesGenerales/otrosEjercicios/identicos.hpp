@@ -1,6 +1,8 @@
 #include "../arbolGeneral_Din.hpp"
 #include <iostream>
 
+//ARREGLAR
+
 template <typename T>
 void identicos(const Agen<T> &A, const Agen<T> &B)
 {
@@ -33,7 +35,7 @@ bool identicos_rec(const Agen<T> &A, typename Agen<T>::nodo nA, const Agen<T> &B
             hijoA = A.hermDrcho(hijoA);
             hijoB = B.hermDrcho(hijoB);
         }
-        
+
         if (nA == Agen<T>::NODO_NULO && nB == Agen<T>::NODO_NULO)
         {
             return true;
