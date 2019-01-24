@@ -185,6 +185,8 @@ void Abb<T>::copiar(const Abb<T> &A)
 }
 
 // EJERCICIO 1
+
+// Esta manera funciona, pero no es la intencionada, dicho por Jose Fidel
 /*
 template <typename T>
 void Abb<T>::poda(const T& elto)
@@ -193,6 +195,7 @@ void Abb<T>::poda(const T& elto)
 
 
 }*/
+
 
 template <typename T>
 void Abb<T>::podar(const T &elto)
@@ -226,6 +229,7 @@ int Abb<T>::tamano() const
         return tamano_rec(r);
 }
 
+// Funcion extra creada por mi 
 template <typename T>
 int Abb<T>::tamano_rec(arbol *n) const
 {
