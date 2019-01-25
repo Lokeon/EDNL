@@ -61,7 +61,7 @@ vector<bool> alergia(const GrafoP<tCoste> &Aut, const GrafoP<tCoste> &Avi, const
         for (vertice j = 0; j < costesFinales.size(); ++j)
         {
 
-            if (min > costesFinales[j] && presupuesto >= 0 && ciudades[j] == false && costesFinales[j] != 0)
+            if (min > costesFinales[j] && presupuesto >= 0 && !ciudades[j] && costesFinales[j] != 0)
             {
                 min = costesFinales[j];
                 posicionj = j;
