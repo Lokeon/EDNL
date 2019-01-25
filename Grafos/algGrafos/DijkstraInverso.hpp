@@ -35,7 +35,7 @@ vector<tCoste> DijkstraInverso(const GrafoP<tCoste> &G, vertice destino, GrafoP<
         S[w] = true;
 
         for (v = 0; v < G.numVert() - 1; ++v)
-        {
+        { 
             if (!S[v])
             {
                 tCoste coste = suma(G[v][w], D[w]);
